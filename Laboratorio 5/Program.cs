@@ -5,28 +5,57 @@ bool menu = true;
 GestionTareas gestionTareas = new GestionTareas();
 while (menu)
 {
-    MostrarMenu();
-    opcion= Convert.ToInt32(Console.ReadLine());
-    switch (opcion)
+    try
     {
-        case 1:
+        MostrarMenu();
+        opcion = Convert.ToInt32(Console.ReadLine());
+        if (opcion > 4 || opcion < 1)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Debes ingresar un número del 1 al 4.");
+            Console.ResetColor();
+            Console.ReadKey();
+        }
+        else
+        {
+            switch (opcion)
             {
-                gestionTareas.RegistrarTarea();
-                break;
+                case 1:
+                    {
+                        gestionTareas.RegistrarTarea();
+                        break;
+                    }
+                case 2:
+                    {
+                        gestionTareas.MostrarTareas();
+                        break;
+                    }
+                case 3:
+                    {
+                        gestionTareas.MarcarComoCompletada();
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("-------------------");
+                        Console.WriteLine("PROGRAMA FINALIZADO");
+                        Console.WriteLine("-------------------");
+                        Console.ResetColor ();
+                        Console.ReadKey();
+                        menu = false;
+                        break;
+                    }
             }
-        case 2:
-            {
-                gestionTareas.MostrarTareas();
-                break;
-            }
-        case 3:
-            {
-                break;
-            }
-        case 4:
-            {
-                break;
-            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Debes ingresar un número del 1 al 4.");
+        Console.ResetColor();
+        Console.ReadKey();
     }
 
 }
