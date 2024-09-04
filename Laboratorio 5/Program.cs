@@ -1,5 +1,8 @@
-﻿int opcion;
+﻿using Laboratorio_5;
+
+int opcion;
 bool menu = true;
+GestionTareas gestionTareas = new GestionTareas();
 while (menu)
 {
     MostrarMenu();
@@ -8,10 +11,12 @@ while (menu)
     {
         case 1:
             {
+                gestionTareas.RegistrarTarea();
                 break;
             }
         case 2:
             {
+                gestionTareas.MostrarTareas();
                 break;
             }
         case 3:
